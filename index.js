@@ -13,7 +13,7 @@ const contract_routes = require("./src/routes/contracts");
 const evaluation_routes = require("./src/routes/evaluation");
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: process.env.ORIGIN_ENV,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 
 //Activacion del CORS para permitir peticiones AJAX y HTTP
 app.use((req, res, next) => {
-  res.header("Acces-Control-Allow-Origin: http://localhost:3000");
+  res.header("Acces-Control-Allow-Origin");
   res.header(
     "Acces-Control-Allow-Headers",
     "Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Allow-Request-Method"
