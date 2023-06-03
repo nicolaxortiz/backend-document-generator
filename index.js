@@ -33,12 +33,9 @@ app.use(bodyParser.json());
 
 //Activacion del CORS para permitir peticiones AJAX y HTTP
 app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
-    "Acces-Control-Allow-Origin",
-    "https://document-generator-6m49x0c55-nicolaxortiz.vercel.app"
-  );
-  res.header(
-    "Acces-Control-Allow-Headers",
+    "Access-Control-Allow-Headers",
     "Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Allow-Request-Method"
   );
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
