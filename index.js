@@ -6,11 +6,11 @@ const bodyParser = require("body-parser");
 const moongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
-const empleoyee_routes = require("./routes/empleoyee");
-const payroll_routes = require("./routes/payroll");
-const layoffs_routes = require("./routes/layoffs");
-const contract_routes = require("./routes/contracts");
-const evaluation_routes = require("./routes/evaluation");
+const empleoyee_routes = require("./src/routes/empleoyee");
+const payroll_routes = require("./src/routes/payroll");
+const layoffs_routes = require("./src/routes/layoffs");
+const contract_routes = require("./src/routes/contracts");
+const evaluation_routes = require("./src/routes/evaluation");
 
 const corsOptions = {
   origin: "http://localhost:3000",
