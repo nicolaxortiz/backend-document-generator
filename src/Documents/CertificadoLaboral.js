@@ -15,7 +15,7 @@ const generatePDF = (res, e) => {
   const doc = new PDFDocument();
   doc.pipe(res);
 
-  doc.image(`D:/Dev/proyecto-grado/backend/src/img/logo.png`, {
+  doc.image(`./src/img/logo.png`, {
     fit: [150, 150],
     align: "left",
     valign: "top",
