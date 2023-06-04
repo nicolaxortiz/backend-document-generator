@@ -57,7 +57,7 @@ const generatePDF = (res, e) => {
   });
 
   doc.moveDown(3);
-  doc.image(`D:/Dev/proyecto-grado/backend/src/img/firma.png`, {
+  doc.image(`./src/img/firma.png`, {
     fit: [150, 150],
     align: "left",
     valign: "top",
