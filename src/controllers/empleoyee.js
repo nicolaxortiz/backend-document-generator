@@ -2,6 +2,8 @@
 
 require("dotenv").config();
 const CertLab = require("../Documents/CertificadoLaboral");
+const ContIndef = require("../Documents/ContratoIndefinido");
+const ContFijo = require("../Documents/ContratoFijo");
 const Empleoyee = require("../models/employee");
 const Layoffs = require("../models/layoffs");
 const Payrolls = require("../models/payroll");
@@ -434,6 +436,50 @@ const controller = {
       }
 
       CertLab(res, empl);
+    });
+  },
+
+  //metodo para generar contrato indefinido
+  getContratoIndefinido: (req, res) => {
+    const EmpleooyeId = req.params.id;
+    Empleoyee.findById({ _id: EmpleooyeId }, (err, empleado) => {
+      if (err) {
+        return res.status(500).send({
+          status: "error",
+          message: "No se han podido listar el empleado",
+        });
+      }
+
+      if (!empleado) {
+        return res.status(404).send({
+          status: "error",
+          message: "No se encontro ningun empleado",
+        });
+      }
+
+      ContIndef(res, empleado);
+    });
+  },
+
+  //metodo para generar contrato fijo
+  getContratoFijo: (req, res) => {
+    const EmpleooyeId = req.params.id;
+    Empleoyee.findById({ _id: EmpleooyeId }, (err, empleado) => {
+      if (err) {
+        return res.status(500).send({
+          status: "error",
+          message: "No se han podido listar el empleado",
+        });
+      }
+
+      if (!empleado) {
+        return res.status(404).send({
+          status: "error",
+          message: "No se encontro ningun empleado",
+        });
+      }
+
+      ContFijo(res, empleado);
     });
   },
 };

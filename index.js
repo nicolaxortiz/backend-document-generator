@@ -9,7 +9,6 @@ const cors = require("cors");
 const empleoyee_routes = require("./src/routes/empleoyee");
 const payroll_routes = require("./src/routes/payroll");
 const layoffs_routes = require("./src/routes/layoffs");
-const contract_routes = require("./src/routes/contracts");
 const evaluation_routes = require("./src/routes/evaluation");
 
 const corsOptions = {
@@ -46,7 +45,6 @@ app.use((req, res, next) => {
 app.use("/", empleoyee_routes);
 app.use("/payroll", payroll_routes);
 app.use("/layoffs", layoffs_routes);
-app.use("/contract", contract_routes);
 app.use("/evaluation", evaluation_routes);
 
 moongoose.connect(url, { useNewUrlParser: true }).then(() => {

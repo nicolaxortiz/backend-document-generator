@@ -15,6 +15,10 @@ router.get("/empleoyee/:id", Empleoyee.getEmpleoyeeById);
 
 router.get("/certificado/:id", Empleoyee.getCertificadoLaboral);
 
+router.get("/contract/indefinido/:id", Empleoyee.getContratoIndefinido);
+
+router.get("/contract/fijo/:id", Empleoyee.getContratoFijo);
+
 router.post("/document", Empleoyee.getEmpleoyeeByDocument);
 
 router.post("/empleoyee/login", Empleoyee.getCredentialsEmpleoyee);
