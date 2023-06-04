@@ -1,5 +1,5 @@
-const Logo = "D:/Dev/proyecto-grado/backend/src/img/logo.png";
-const Firma = "D:/Dev/proyecto-grado/backend/src/img/firma.png";
+const Logo = __dirname + "/logo.png";
+const Firma = __dirname + "/firma.png";
 const PdfPrinter = require("pdfmake/src/printer");
 const NumerosALetras = require("./PriceConvert");
 const company = require("./CompanyInfo");
