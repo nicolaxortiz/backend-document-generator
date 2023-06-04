@@ -15,9 +15,16 @@ const fonts = {
 const printer = new PdfPrinter(fonts);
 
 const date = new Date();
-const day = date.getDate().toString().padStart(2, "0");
-const month = (date.getMonth() + 1).toString().padStart(2, "0");
-const year = date.getFullYear().toString();
+const options = { timeZone: "America/Bogota" };
+const day = date
+  .toLocaleString("es-CO", options)
+  .split("/")[0]
+  .padStart(2, "0");
+const month = date
+  .toLocaleString("es-CO", options)
+  .split("/")[1]
+  .padStart(2, "0");
+const year = date.toLocaleString("es-CO", options).split("/")[2].split(",")[0];
 
 const currentDate = `${day}/${month}/${year}`;
 

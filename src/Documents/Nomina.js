@@ -21,6 +21,7 @@ const options = {
   year: "numeric",
   month: "long",
   day: "numeric",
+  timeZone: "America/Bogota",
 };
 const formattedDate = date.toLocaleDateString("es-ES", options);
 
