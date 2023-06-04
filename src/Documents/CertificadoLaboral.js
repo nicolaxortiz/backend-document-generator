@@ -15,7 +15,7 @@ const generatePDF = (res, e) => {
   const doc = new PDFDocument();
   doc.pipe(res);
 
-  doc.image(__dirname + "\\logo.png", {
+  doc.image(__dirname + "/logo.png", {
     fit: [150, 150],
     align: "left",
     valign: "top",
@@ -57,7 +57,7 @@ const generatePDF = (res, e) => {
   });
 
   doc.moveDown(3);
-  doc.image(__dirname + "\\firma.png", {
+  doc.image(__dirname + "/firma.png", {
     fit: [150, 150],
     align: "left",
     valign: "top",
