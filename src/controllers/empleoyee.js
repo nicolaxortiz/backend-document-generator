@@ -206,53 +206,55 @@ const controller = {
 
         const newPassword = await encryptPass(randomPassword);
 
-        Empleoyee.updateOne(
-          { user_id: empleoyee?._id },
-          { password: newPassword },
-          (err, empl) => {
-            if (err) {
-              return res.status(500).send({
-                status: "error",
-                message: "No se ha podido enviar la nueva contraseña",
-              });
-            }
-
-            if (!empleoyee) {
-              return res.status(404).send({
-                status: "error",
-                message: "No se encontro ningun empleado",
-              });
-            }
-
-            const enviarCorreo = async () => {
-              try {
-                // Configura los detalles del correo electrónico
-                const opcionesCorreo = {
-                  from: "empresaejemplo01@outlook.com",
-                  to: empleoyee?.email,
-                  subject:
-                    "Recordatorio de la contraseña - Software Empresarial",
-                  text: `Estimado usuario, su nueva contraseña es: ${randomPassword}
-                \nLe recordamos que ingrese a la plataforma y cambie su contraseña para mantener su seguridad. \nEste mensaje ha sido enviado a peticion del usuario.`,
-                };
-
-                // Envía el correo electrónico
-                const info = await transporter.sendMail(opcionesCorreo);
-                return res.status(200).send({
-                  status: "success",
-                  message: "Correo electronico enviado",
-                });
-              } catch (error) {
+        setTimeout(() => {
+          Empleoyee.findByIdAndUpdate(
+            empleoyee?._id,
+            { password: newPassword },
+            (err, empl) => {
+              if (err) {
                 return res.status(500).send({
                   status: "error",
-                  message: "No se pudo enviar el correo electronico",
+                  message: "No se ha podido actualizar la contraseña",
                 });
               }
-            };
 
-            enviarCorreo();
-          }
-        );
+              if (!empleoyee) {
+                return res.status(404).send({
+                  status: "error",
+                  message: "No se encontro ningun empleado",
+                });
+              }
+
+              const enviarCorreo = async () => {
+                try {
+                  // Configura los detalles del correo electrónico
+                  const opcionesCorreo = {
+                    from: "empresaejemplo01@outlook.com",
+                    to: empleoyee?.email,
+                    subject:
+                      "Recordatorio de la contraseña - Software Empresarial",
+                    text: `Estimado usuario, su nueva contraseña es: ${randomPassword}
+                  \nLe recordamos que ingrese a la plataforma y cambie su contraseña para mantener su seguridad. \nEste mensaje ha sido enviado a peticion del usuario.`,
+                  };
+
+                  // Envía el correo electrónico
+                  const info = await transporter.sendMail(opcionesCorreo);
+                  return res.status(200).send({
+                    status: "success",
+                    message: "Correo electronico enviado",
+                  });
+                } catch (error) {
+                  return res.status(500).send({
+                    status: "error",
+                    message: "No se pudo enviar el correo electronico",
+                  });
+                }
+              };
+
+              enviarCorreo();
+            }
+          );
+        }, 6000);
       }
     );
   },
