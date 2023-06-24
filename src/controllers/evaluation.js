@@ -37,7 +37,7 @@ const controller = {
       if (err || !evaluationSaved) {
         res.status(404).send({
           status: "error",
-          message: "La evaluacion no pudo ser guardada",
+          message: "La evaluacion no pudo ser guardada:" + err,
         });
       }
 

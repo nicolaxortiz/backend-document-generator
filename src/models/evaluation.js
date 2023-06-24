@@ -9,36 +9,36 @@ let EvaluationSchema = new Schema({
     ref: "Empleooye",
     required: true,
   },
-  date: String,
+  date: { type: String, required: true },
   dateOrder: Number,
-  evaluatorName: String,
-  evaluatorPosition: String,
-  evaluatorDocument: Number,
+  evaluatorName: { type: String, required: true },
+  evaluatorPosition: { type: String, required: true },
+  evaluatorDocument: { type: Number, required: true },
   comment: String,
   topics: {
     communication: {
       name: { type: String, default: "Habilidad de comunicación" },
-      value: Number,
+      value: { type: Number, required: true },
     },
     teamWork: {
       name: { type: String, default: "Trabajo en equipo" },
-      value: Number,
+      value: { type: Number, required: true },
     },
     problemSolving: {
       name: { type: String, default: "Resolución de problemas" },
-      value: Number,
+      value: { type: Number, required: true },
     },
     productivity: {
       name: { type: String, default: "Productividad laboral" },
-      value: Number,
+      value: { type: Number, required: true },
     },
     punctuality: {
       name: { type: String, default: "Puntualidad" },
-      value: Number,
+      value: { type: Number, required: true },
     },
     quality: {
       name: { type: String, default: "Calidad de trabajo" },
-      value: Number,
+      value: { type: Number, required: true },
     },
   },
 });
