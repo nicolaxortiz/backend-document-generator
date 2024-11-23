@@ -14,13 +14,13 @@ const nodemailer = require("nodemailer");
 const generatePassword = require("generate-password");
 
 //Configuracion del correo
+
+// Set up Nodemailer transporter
 const transporter = nodemailer.createTransport({
-  host: "smtp.office365.com",
-  port: 587,
-  secure: false,
+  service: "gmail",
   auth: {
-    user: "empresaejemplo01@outlook.com",
-    pass: "EmpresaEmpresa0101",
+    user: process.env.EMAIL_SMTP,
+    pass: process.env.PASSWORD_SMTP,
   },
 });
 
@@ -246,7 +246,8 @@ const controller = {
                 } catch (error) {
                   return res.status(500).send({
                     status: "error",
-                    message: "No se pudo enviar el correo electronico",
+                    message:
+                      "No se pudo enviar el correo electronico: " + error,
                   });
                 }
               };
