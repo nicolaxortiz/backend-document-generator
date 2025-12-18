@@ -55,7 +55,7 @@ const controller = {
       if (err || !sav) {
         return res.status(404).send({
           status: "error",
-          message: "El empleado no pudo ser guardado",
+          message: "El empleado no pudo ser guardado: " + err.message,
         });
       }
 
